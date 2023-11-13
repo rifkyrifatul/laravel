@@ -12,6 +12,7 @@ class jenis_produk extends Model
     protected $table = 'jenis_produk';
     //mapping kolom atau field
     protected $fillable = ['nama'];
+    public $timestamps = false;
     //relasi antara table
 
     public function produk(){
