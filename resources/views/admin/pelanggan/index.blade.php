@@ -25,6 +25,7 @@
                                             <th>Tanggal Lahir</th>
                                             <th>Email</th>
                                             <th>Kartu</th>
+                                            <th>Action</th>
                                             
                                         </tr>
                                     </thead>
@@ -38,6 +39,7 @@
                                             <th>Tanggal Lahir</th>
                                             <th>Email</th>
                                             <th>Kartu</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>

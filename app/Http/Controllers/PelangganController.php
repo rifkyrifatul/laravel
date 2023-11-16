@@ -78,6 +78,16 @@ class PelangganController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $pelanggan = Pelanggan::find($request->id);
+        $pelanggan->kode = $request->kode;
+        $pelanggan->nama = $request->nama;
+        $pelanggan->jk = $request->jk;
+        $pelanggan->tmp_lahir = $request->tmp_lahir;
+        $pelanggan->tgl_lahir = $request->tgl_lahir;
+        $pelanggan->email = $request->email;
+        $pelanggan->kartu_id = $request->kartu_id;
+        $pelanggan->save();
+        return redirect('admin/pelanggan')->with('succes','pelanggan berhasil diupdate');
     }
 
     /**
