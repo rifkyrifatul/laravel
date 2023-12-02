@@ -17,6 +17,7 @@ class produk extends Model
     public function jenis_produk(){
         return $this->belongTo(jenis_produk::class);
     }
+    public $timestamps = false;
     //relasi one to one
     // public function gaji(){
     //     return $this->hasOne(Gaji::class);

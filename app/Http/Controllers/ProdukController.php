@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\Jenis_produk;
 use Illuminate\Support\Facades\DB;
+use App\Exports\ProdukExport;
+use Maatwebsite\Excel\Facades\Excel;
 use PDF;
+use App\Import\ProdukImport;
 
 class ProdukController extends Controller
 {
@@ -204,5 +207,14 @@ class ProdukController extends Controller
         $pdf = PDF::loadView('admin.produk.produkPDF_show', ['produk'=>$produk]);
         return $pdf->stream();
     }
-    
+    public function exportProduk(){
+        return Excel::download(new ProdukExport, 'produk.xlsx');
+    }
+    public function importProduk() 
+    {
+        Excel::import(new PenumpangImport, $request->file('file')->store('temp'));
+      
+        
+        return redirect('admin/penumpang')->with('success', 'Produk Berhasil diimport!');
+    }
 }

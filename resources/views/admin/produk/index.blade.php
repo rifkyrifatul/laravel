@@ -11,6 +11,8 @@
                         <div class="card-header py-3">
                         <a href="{{url('admin/produk/create')}}" class="btn btn-primary" ><i class="fas fa-plus"></i></a>
                         <a href="{{url('admin/produk/produkPDF')}}"class="btn btn-danger"><i class="fas fa-file-pdf"></i></a>
+                        <a href="{{url('admin/produk/export')}}"class="btn btn-success"><i class="fas fa-file-excel"></i></a>
+                        <form action="{{url('admin/produk/import')}}" method="POST"> enctype="multipart/form-data"
                       </div>
                         <div class="card-body">
                             <div class="table-responsive">
