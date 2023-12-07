@@ -20,9 +20,11 @@ class Peran
         if(Auth::check()){
             $peran = explode('-', $peran);
             foreach($peran as $group){
-                return $next($request);
-                    
+                if(Auth::user()->role == $group){
+                    return $next($request);
+                }
             }
         }
+        return redirect('/');
     }
 }

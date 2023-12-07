@@ -8,6 +8,8 @@ use App\Http\Controllers\KartuController;
 use App\Http\Controllers\JenisProdukController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,10 @@ use App\Http\Controllers\PelangganController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [BerandaController::class,'index']);
 Route::get('/salam', function(){
     return "Assalamualaikum selamat belajar Laravel";
 });
@@ -44,7 +47,7 @@ Route::get('/daftarnilai', function(){
 //routing manggil dari class controller
 Route::get('/datamahasiswa', [LihatNilaiController::class, 'dataMahasiswa']);
 
-Route::group(['middleware'=>['auth']], function(){
+Route::group(['middleware'=>['auth','peran:admin-manager-staff']], function(){
 Route::prefix('admin')->group(function(){
 Route::get('/dashboard', [DashboardController::class, 'index']);
 //contoh pemanggilan secara satu persatu function menggunakan get,put, update, delete
@@ -76,6 +79,7 @@ Route::post('/produk/import/', [ProdukController::class, 'importProduk']);
 
 
 Route::resource('pelanggan', PelangganController::class);
+Route::get('/user', [UserController::class, 'index']);
 
 });
 });
